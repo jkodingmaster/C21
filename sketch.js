@@ -14,9 +14,6 @@ function preload()
 
 function setup() {
 	createCanvas(1600, 700);
-	groundobject=new ground(800,680,1600,20);
-	left=new ground(1100,600,20,20,120
-	right=new ground(1350,600,20,120))
 	engine = Engine.create();
 	world = engine.world;
 	var ball_options = {
@@ -24,6 +21,9 @@ function setup() {
 		resitution: 0.95,
 		density: 1.2
 	}
+	groundobject=new ground(800,680,1600,20);
+	left=new ground(1100,600,20,120);
+	right=new ground(1350,600,20,120);
 
 	
 
@@ -42,10 +42,14 @@ function draw() {
   Engine.update(engine);
   drawSprites();
  ellipse(ball.position.x,ball.position.y,20,20);
- groundobject.show
- left.show
- right.show
+ groundobject.show();
+ left.show();
+ right.show();
 }
 
 
-
+function keyPressed(){
+	if(keyCode===RIGHT_ARROW){
+		Body.applyForce(ball,{x:0,y:0},{x:85,y:-85})
+	}
+}
